@@ -47,8 +47,8 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         //
-        return(' Login Successful!');
-        //The rest of the functions you want to be called can be done here (eg AJAX)
+        return(' Login Successful');
+        // The rest of the functions you want to be called can be done here (eg AJAX)
     }
 
 }

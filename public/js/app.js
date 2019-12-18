@@ -1897,10 +1897,12 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     emailIsValid: function emailIsValid() {
       // Validate Login
-      return this.email;
+      return true;
     },
-    attemptLogin: function attemptLogin() {
-      // console.log(' Submiitted!')
+    attemptLogin: function attemptLogin(e) {
+      e.preventDefault();
+      alert(' Submiitted!');
+      console.clear();
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/login', {
         email: this.email,
         password: this.password,
@@ -1912,7 +1914,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     isValidLoginForm: function isValidLoginForm() {
-      return this.emailIsValid && this.password;
+      return this.email && this.password;
     }
   },
   mounted: function mounted() {
@@ -37253,7 +37255,7 @@ var render = function() {
               },
               [
                 _c("h5", { staticClass: "text-uppercase text-center" }, [
-                  _vm._v("Login")
+                  _vm._v("Login To Your account")
                 ]),
                 _vm._v(" "),
                 _c("form", [
@@ -37268,7 +37270,11 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", placeholder: "Email" },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Email",
+                        autocomplete: "true"
+                      },
                       domProps: { value: _vm.email },
                       on: {
                         input: function($event) {
@@ -37292,7 +37298,11 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "password", placeholder: "Password" },
+                      attrs: {
+                        type: "password",
+                        placeholsder: "*******",
+                        autocomplete: "current-password"
+                      },
                       domProps: { value: _vm.password },
                       on: {
                         input: function($event) {
@@ -37375,11 +37385,7 @@ var render = function() {
                       {
                         staticClass: "btn btn-bold btn-block btn-primary",
                         attrs: { disabled: !_vm.isValidLoginForm },
-                        on: {
-                          click: function($event) {
-                            return _vm.attemptLogin()
-                          }
-                        }
+                        on: { click: _vm.attemptLogin }
                       },
                       [_vm._v("Login")]
                     )

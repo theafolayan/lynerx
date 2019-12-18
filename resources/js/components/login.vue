@@ -51,7 +51,8 @@
             return{
                 email: '',
                 password: '',
-                remember: true
+                remember: true,
+                loading: false
             }
         }, 
         methods:{
@@ -61,6 +62,7 @@
             },
             attemptLogin(e){
               e.preventDefault();
+              this.loading = true;
               
               // alert(' Submiitted!');
               // console.clear();
@@ -71,12 +73,15 @@
                 }).then(resp =>{
                     // console.log(resp.data)
                     location.reload();
-                })
+                }).catch(error => {  
+                  this.loading = false;
+                  console.log(error)});
+                
             }
         },
         computed:{
             isValidLoginForm(){
-                return this.email && this.password
+                return this.email && this.password && !this.loading;
                 }
         },
         mounted() {

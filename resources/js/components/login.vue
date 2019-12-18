@@ -26,7 +26,7 @@
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Remember me</span>
           </label>
-          <a class="text-muted hover-primary fs-13" href="#">Forgot password?</a>
+          <a class="text-muted hover-primary fs-13" href="">Forgot pa</a>ssword?
         </div>
 
         <div class="form-group">

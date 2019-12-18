@@ -1891,7 +1891,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       email: '',
       password: '',
-      remember: true
+      remember: true,
+      loading: false
     };
   },
   methods: {
@@ -1900,7 +1901,10 @@ __webpack_require__.r(__webpack_exports__);
       return true;
     },
     attemptLogin: function attemptLogin(e) {
-      e.preventDefault(); // alert(' Submiitted!');
+      var _this = this;
+
+      e.preventDefault();
+      this.loading = true; // alert(' Submiitted!');
       // console.clear();
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/login', {
@@ -1910,12 +1914,15 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (resp) {
         // console.log(resp.data)
         location.reload();
+      })["catch"](function (error) {
+        _this.loading = false;
+        console.log(error);
       });
     }
   },
   computed: {
     isValidLoginForm: function isValidLoginForm() {
-      return this.email && this.password;
+      return this.email && this.password && !this.loading;
     }
   },
   mounted: function mounted() {
@@ -37374,10 +37381,11 @@ var render = function() {
                       "a",
                       {
                         staticClass: "text-muted hover-primary fs-13",
-                        attrs: { href: "#" }
+                        attrs: { href: "" }
                       },
-                      [_vm._v("Forgot password?")]
-                    )
+                      [_vm._v("Forgot pa")]
+                    ),
+                    _vm._v("ssword?\n        ")
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [

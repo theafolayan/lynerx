@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 use \Illuminate\Http\Request;
-
+use App\Exceptions\AuthFailedException;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -52,5 +52,24 @@ class LoginController extends Controller
         ]);
         
     }
+
+
+    /**
+     * Get the failed login response instance.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        // throw ValidationException::withMessages([
+        //     $this->username() => [trans('auth.failed')],
+        // ]);
+
+        throw new AuthFailedException;
+    }
+
 
 }

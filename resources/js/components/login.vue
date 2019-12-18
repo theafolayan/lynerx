@@ -62,14 +62,15 @@
             attemptLogin(e){
               e.preventDefault();
               
-              alert(' Submiitted!');
-              console.clear();
+              // alert(' Submiitted!');
+              // console.clear();
                 axios.post('/login', {
                     email: this.email,
                     password: this.password,
                     remember: this.remember
                 }).then(resp =>{
-                    console.log(resp)
+                    // console.log(resp.data)
+                    location.reload();
                 })
             }
         },

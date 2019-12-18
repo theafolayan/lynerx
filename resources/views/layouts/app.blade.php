@@ -42,11 +42,17 @@
                 <ul class="topbar-nav nav">
                   <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
                  
-      
-                  <li class="nav-item">
+                  @if (auth()->check())
+                <li class="nav-item">Hey {{auth()->user()->name}}</li>
+                <a class="nav-item" href="{{route('logout')}}" >LOGOUT</a>
+                  
+                  @else
+                      <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">LOGIN</a>
                     
                   </li>
+                  @endif
+                  
       
                 
                 </ul>
@@ -59,7 +65,9 @@
            <main class="main-content"> 
                @yield('content');
            </main>
-           <vue-login> </vue-login>
+           @if (!auth()->check())
+               <vue-login> </vue-login>
+           @endif
     </div>
   
     <footer>

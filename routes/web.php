@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('/logout', function () {
     auth()->logout();
-    return view('welcome');
+    return redirect(route('home'));
 });
 Auth::routes();
 

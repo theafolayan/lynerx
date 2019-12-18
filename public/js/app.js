@@ -1900,15 +1900,16 @@ __webpack_require__.r(__webpack_exports__);
       return true;
     },
     attemptLogin: function attemptLogin(e) {
-      e.preventDefault();
-      alert(' Submiitted!');
-      console.clear();
+      e.preventDefault(); // alert(' Submiitted!');
+      // console.clear();
+
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/login', {
         email: this.email,
         password: this.password,
         remember: this.remember
       }).then(function (resp) {
-        console.log(resp);
+        // console.log(resp.data)
+        location.reload();
       });
     }
   },

@@ -12,6 +12,9 @@
       <h5 class="text-uppercase text-center">Login To Your account</h5>
       
       <form>
+        <div class="alert alert-danger" v-if="errors.length > 0"> 
+          {{errors[0]}}
+        </div>
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Email" v-model="email" autocomplete="true">
         </div>
@@ -52,7 +55,8 @@
                 email: '',
                 password: '',
                 remember: true,
-                loading: false
+                loading: false,
+                errors: []
             }
         }, 
         methods:{
@@ -63,6 +67,7 @@
             attemptLogin(e){
               e.preventDefault();
               this.loading = true;
+              this.errors = [];
               
               // alert(' Submiitted!');
               // console.clear();
@@ -75,7 +80,13 @@
                     location.reload();
                 }).catch(error => {  
                   this.loading = false;
-                  console.log(error)});
+                  console.log(error)
+                  if (error.response.status == 422) {
+                    this.errors.push('We couldn\'t verify that the details you input matches our records.. Please check your entries and try again ');
+                  }else{
+                    this.errors.push(' Something went wrong, Please refresh and try again')
+                  }
+                  });
                 
             }
         },

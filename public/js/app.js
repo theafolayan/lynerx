@@ -1885,6 +1885,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1892,7 +1895,8 @@ __webpack_require__.r(__webpack_exports__);
       email: '',
       password: '',
       remember: true,
-      loading: false
+      loading: false,
+      errors: []
     };
   },
   methods: {
@@ -1904,7 +1908,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       e.preventDefault();
-      this.loading = true; // alert(' Submiitted!');
+      this.loading = true;
+      this.errors = []; // alert(' Submiitted!');
       // console.clear();
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/login', {
@@ -1917,6 +1922,12 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         _this.loading = false;
         console.log(error);
+
+        if (error.response.status == 422) {
+          _this.errors.push('We couldn\'t verify that the details you input matches our records.. Please check your entries and try again ');
+        } else {
+          _this.errors.push(' Something went wrong, Please refresh and try again');
+        }
       });
     }
   },
@@ -37267,6 +37278,14 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("form", [
+                  _vm.errors.length > 0
+                    ? _c("div", { staticClass: "alert alert-danger" }, [
+                        _vm._v(
+                          " \n          " + _vm._s(_vm.errors[0]) + "\n        "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
                     _c("input", {
                       directives: [

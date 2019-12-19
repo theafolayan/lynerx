@@ -2,7 +2,7 @@
 
 @section('header')
 
-<header class="header fadeout header-inverse pb-80 h-fullscreen" style="background-image: url('{{asset('img/bg.jpeg')}}' );">
+<header class="header fadeout header-inverse pb-80 h-fullscreen" style="background-image: url('https://images.unsplash.com/photo-1497091071254-cc9b2ba7c48a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=753&q=80' );">
     <canvas class="constellation"></canvas>
 
     <div class="container">

@@ -1,77 +1,72 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+    <title>TheSaaS - Register</title>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+    <!-- Styles --><link href="{{ asset('css/core.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/thesaas.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+  
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+    <link rel="icon" href="assets/img/favicon.png">
+  </head>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+  <body class="mh-fullscreen bg-img center-vh p-20" style="background-image: url(assets/img/bg-girl.jpg);">
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+    <div class="card card-shadowed p-50 w-400 mb-0" style="max-width: 100%">
+      <h5 class="text-uppercase text-center">Register</h5>
+      <br><br>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+      <form class="form-type-material">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Username">
         </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Email address">
+        </div>
+
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password">
+        </div>
+
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password (confirm)">
+        </div>
+
+        <div class="form-group">
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">I agree to all <a class="text-primary" href="#">terms</a></span>
+          </label>
+        </div>
+
+        <br>
+        <button class="btn btn-bold btn-block btn-primary" type="submit">Register</button>
+      </form>
+
+      <hr class="w-30">
+
+      <p class="text-center text-muted fs-13 mt-20">Already have an account? <a href="page-login.html">Sign in</a></p>
     </div>
-</div>
-@endsection
+
+
+
+
+    <!-- Scripts -->
+    <script src="{{asset('js/core.min.js')}}"></script>
+    <script src="{{asset('js/thesaas.min.js')}}"></script>
+    <script src="{{asset('js/script.js')}}"></script>
+  </body>
+</html>

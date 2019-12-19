@@ -51,6 +51,10 @@
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">LOGIN</a>
                     
                   </li>
+                  <li class="nav-item">
+                  <a class="nav-link" href="{{route('register')}}" >REGISTER</a>
+                    
+                  </li>
                   @endif
                   
       

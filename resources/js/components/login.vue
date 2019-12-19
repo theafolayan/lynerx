@@ -96,7 +96,7 @@
                 }
         },
         mounted() {
-            console.log('Component mounted.');
+            console.log('Login Component Mounted.');
         }
     }
 </script>

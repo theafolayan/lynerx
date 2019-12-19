@@ -17,13 +17,13 @@ class RegisterationTest extends TestCase
     {
         $this->post('/register', [
             'name' => 'Oluwaseun Afolayan',
-            'email' => 'Kati@frantz.com',
+            'email' => 'theafolayan@gmail.com',
             'password' => 'secretive'
             ])->assertStatus(200);
 
             $this->assertDatabaseHas('users', [
-                'username' => str_slug('Oluwaseun afolayan'),
-                //'username' => Str::slug('Oluwaseun afolayan')
+                // 'username' => str_slug('Oluwaseun afolayan'),
+                'username' => Str::slug('Oluwaseun afolayan')
             ]);
     }
 }

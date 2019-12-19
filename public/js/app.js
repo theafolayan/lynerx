@@ -37298,7 +37298,7 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
-                        type: "text",
+                        type: "email",
                         placeholder: "Email",
                         autocomplete: "true"
                       },
@@ -37400,11 +37400,10 @@ var render = function() {
                       "a",
                       {
                         staticClass: "text-muted hover-primary fs-13",
-                        attrs: { href: "" }
+                        attrs: { href: "/password/reset" }
                       },
-                      [_vm._v("Forgot pa")]
-                    ),
-                    _vm._v("ssword?\n        ")
+                      [_vm._v("Forgot your password?")]
+                    )
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
@@ -37436,7 +37435,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "text-center text-muted fs-13 mt-20" }, [
       _vm._v("Don't have an account? \n        "),
-      _c("a", { attrs: { href: "page-register.html" } }, [_vm._v("Sign up")])
+      _c("a", { attrs: { href: "/register" } }, [_vm._v("Sign up")])
     ])
   }
 ]

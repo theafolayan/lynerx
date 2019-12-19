@@ -16,7 +16,7 @@
           {{errors[0]}}
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Email" v-model="email" autocomplete="true">
+          <input type="email" class="form-control" placeholder="Email" v-model="email" autocomplete="true">
         </div>
 
         <div class="form-group">
@@ -29,7 +29,7 @@
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">Remember me</span>
           </label>
-          <a class="text-muted hover-primary fs-13" href="">Forgot pa</a>ssword?
+          <a class="text-muted hover-primary fs-13" href="/password/reset">Forgot your password?</a>
         </div>
 
         <div class="form-group">
@@ -37,7 +37,7 @@
         </div>
       </form>
       <p class="text-center text-muted fs-13 mt-20">Don't have an account? 
-        <a href="page-register.html">Sign up</a>
+        <a href="/register">Sign up</a>
       </p>
     </div>
 

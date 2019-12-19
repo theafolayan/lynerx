@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
 
-    <title>TheSaaS - Register</title>
+    <title>Learnx - Register</title>
 
     <!-- Styles --><link href="{{ asset('css/core.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/thesaas.css') }}" rel="stylesheet">
@@ -27,22 +27,43 @@
       <h5 class="text-uppercase text-center">Register</h5>
       <br><br>
 
-      <form class="form-type-material">
+      <form class="form-type-material" action="/register" method="POST">
+        {{-- {{ @csrf_token() }} --}}
+        {{-- @csrf --}}
+        {{ csrf_field() }}
+
+        {{-- @if ($errors->any)
+          @foreach ($error as $errors)
+      <li class="list-group-item-danger ">{{$error}}</li>
+          @endforeach
+        @endif --}}
+
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Username">
+          <input type="text" class="form-control" placeholder="Full Name" name="name">
         </div>
 
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Email address">
+          <input type="email" class="form-control" placeholder="email" name="email">
         </div>
+          @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+        
 
         <div class="form-group">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" class="form-control" name = "password" placeholder="password">
         </div>
+          @error('password')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
 
-        <div class="form-group">
+        {{-- <div class="form-group">
           <input type="password" class="form-control" placeholder="Password (confirm)">
-        </div>
+        </div> --}}
 
         <div class="form-group">
           <label class="custom-control custom-checkbox">
@@ -53,7 +74,7 @@
         </div>
 
         <br>
-        <button class="btn btn-bold btn-block btn-primary" type="submit">Register</button>
+        <input class="btn btn-bold btn-block btn-primary" type="submit" value="Register">
       </form>
 
       <hr class="w-30">

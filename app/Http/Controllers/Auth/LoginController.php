@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Lynerx\Http\Controllers\Auth;
 use \Illuminate\Http\Request;
-use App\Exceptions\AuthFailedException;
-use App\Http\Controllers\Controller;
+use Lynerx\Exceptions\AuthFailedException;
+use Lynerx\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller

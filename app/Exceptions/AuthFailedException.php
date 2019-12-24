@@ -1,5 +1,5 @@
 <?php
-namespace App\Exceptions;
+namespace Lynerx\Exceptions;
 use Exception;
 
 class AuthFailedException extends Exception{

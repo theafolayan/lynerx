@@ -11,13 +11,13 @@
           {{-- <h1 class="fs-50 fw-600 lh-15 hidden-sm-down">Built for <span class="text-primary" data-type="Authors, Startups, Entrepreneurs, SaaS, WebApps"></span></h1>
           <h1 class="fs-35 fw-600 lh-15 hidden-md-up">Built for<br><span class="text-primary" data-type="Authors, Startups, Entrepreneurs, SaaS, WebApps"></span></h1> --}}
           <br>
-          <p class="fs-20 hidden-sm-down"><strong>Lynerx</strong> is an elegant, subscription based SaaS platform built with Laravel 6 and Vue.js 2</p>
-          <p class="fs-16 hidden-md-up"><strong>TheSaaS</strong> is an elegant, modern and fully customizable SaaS and WebApp template</p>
+          <p class="fs-20 hidden-sm-down"><strong>Lynerx</strong> is an elegant, subscription based SaaS platform built with Laravel 6 and Vue.js 2.6.2</p>
+          <p class="fs-16 hidden-md-up"><strong>Lynerx </strong> is the E-Learning Platform You need</p>
           <br>
           <hr class="w-60 hidden-sm-down">
           <br>
-          <a class="btn btn-xl btn-round btn-primary fs-20 fw-500 w-350 shadow-3 hidden-sm-down" href="#">Sign Up Now</a>
-          <a class="btn btn-lg btn-round btn-primary w-250 shadow-3 hidden-md-up" href="#">Sign Up Now</a>
+          <a class="btn btn-xl btn-round btn-primary fs-20 fw-500 w-350 shadow-3 hidden-sm-down" href="{{route('register')}}">Sign Up Now</a>
+        <a class="btn btn-lg btn-round btn-warning w-250 shadow-3 hidden-md-up" href="{{route('register')}}">Sign Up Now</a>
           <br>
           </div>
 

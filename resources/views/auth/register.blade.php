@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
 
-    <title>Learnx - Register</title>
+    <title>Lynernx - Register</title>
 
     <!-- Styles --><link href="{{ asset('css/core.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/thesaas.css') }}" rel="stylesheet">

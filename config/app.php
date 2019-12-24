@@ -169,11 +169,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Lynerx\Providers\AppServiceProvider::class,
+        Lynerx\Providers\AuthServiceProvider::class,
+        // Lynerx\Providers\BroadcastServiceProvider::class,
+        Lynerx\Providers\EventServiceProvider::class,
+        Lynerx\Providers\RouteServiceProvider::class,
 
     ],
 

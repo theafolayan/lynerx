@@ -84,7 +84,7 @@
                   if (error.response.status == 422) {
                     this.errors.push('We couldn\'t verify that the details you input matches our records.. Please check your entries and try again ');
                   }else{
-                    this.errors.push(' Something went wrong, Please refresh and try again')
+                    this.errors.push(' Something went wrong, Please refresh and try again');
                   }
                   });
                 

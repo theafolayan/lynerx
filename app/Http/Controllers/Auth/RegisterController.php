@@ -4,17 +4,24 @@ namespace Lynerx\Http\Controllers\Auth;
 
 use Lynerx\Http\Controllers\Controller;
 use Lynerx\User;
+use Lynerx\Mail\ConfirmYourEmail;
+
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+
+// use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+// FacadesRequest
 
 class RegisterController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
     | Register Controller
-    |--------------------------------------------------------------------------
+    |---------------------------    -----------------------------------------------
     |
     | This controller handles the registration of new users as well as their
     | validation and creation. By default this controller uses a trait to
@@ -56,6 +63,7 @@ class RegisterController extends Controller
         ]);
     }
 
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -70,6 +78,21 @@ class RegisterController extends Controller
             'username' => Str::slug($data['name']),
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
+        ])->assertRedirect();
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        // Mail
+        Mail::to($user)->send(new ConFirmYourEmail);
+        return redirect($this->redirectPath());
     }
 }
+

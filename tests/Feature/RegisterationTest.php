@@ -36,8 +36,11 @@ class RegisterationTest extends TestCase
             'email' => 'theafolayan@gmail.com',
             'password' => 'secretive'
         ]);
+
+
       
         # Assert that a particular email was sent
+        Mail::assertSent(ConfirmYourEmail::class);
         
     }
 }

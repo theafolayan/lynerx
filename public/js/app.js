@@ -37300,6 +37300,7 @@ var render = function() {
                       attrs: {
                         type: "email",
                         placeholder: "Email",
+                        name: "email",
                         autocomplete: "true"
                       },
                       domProps: { value: _vm.email },
@@ -37327,7 +37328,7 @@ var render = function() {
                       staticClass: "form-control",
                       attrs: {
                         type: "password",
-                        placeholsder: "*******",
+                        placeholder: "*******",
                         autocomplete: "current-password"
                       },
                       domProps: { value: _vm.password },

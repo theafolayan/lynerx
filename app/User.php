@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username',
+        'name', 'email', 'password', 'username', 'confirm_token',
     ];
 
     /**
@@ -27,7 +27,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
     /**
      * The attributes that should be cast to native types.
      *
@@ -36,4 +35,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function isConfirmed()
+    {
+        return $this->confirm_token == null;
+    }
+    public function confirm()
+    {
+        # code...
+        $this->confirm_token = null;
+        $this->save();
+    }
+    public function isAdmin()
+    {
+      return in_array($this->email, config('Lynerx.administrators'));
+    }
 }

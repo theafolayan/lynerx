@@ -5,9 +5,12 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Lynerx\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
+use Lynerx\Mail\ConfirmYourEmail;
 class RegisterationTest extends TestCase
+
 {
     /**
      * A basic feature test example.
@@ -42,5 +45,20 @@ class RegisterationTest extends TestCase
         # Assert that a particular email was sent
         Mail::assertSent(ConfirmYourEmail::class);
         
+    }
+
+    public function test_user_has_registeration_token()
+    {
+        Mail::fake();
+        $this->withoutExceptionHandling();
+        $this->post('/register', [
+            'name' => 'Oluwaseun Afolayan',
+            'email' => 'theafolayan@gmail.com',
+            'password' => 'secretive'
+        ])->assertRedirect();
+        $user = User::find(1);
+        $this->assertNotNull($user->confirm_token);
+        $this->assertFalse($user->isConfirmed());
+
     }
 }

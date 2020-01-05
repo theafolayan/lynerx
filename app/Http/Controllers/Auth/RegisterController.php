@@ -5,7 +5,7 @@ namespace Lynerx\Http\Controllers\Auth;
 use Lynerx\Http\Controllers\Controller;
 use Lynerx\User;
 use Lynerx\Mail\ConfirmYourEmail;
-
+// use Illuminate\Support\Str;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -77,8 +77,9 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'username' => Str::slug($data['name']),
             'email' => $data['email'],
+            'confirm_token' => Str::random(25),
             'password' => Hash::make($data['password']),
-        ])->assertRedirect();
+        ]);
     }
 
     /**
@@ -91,7 +92,7 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         // Mail
-        Mail::to($user)->send(new ConFirmYourEmail);
+        Mail::to($user)->send(new ConfirmYourEmail($user));
         return redirect($this->redirectPath());
     }
 }

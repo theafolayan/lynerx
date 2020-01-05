@@ -11,10 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+ Route::get('/', function () {
+     return view('welcome');
+ });
 Route::get('/logout', function () {
     auth()->logout();
     return redirect('/');
@@ -24,4 +26,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/test', function(){
     return view('layouts.app');
+}); 
+Route::get('/register/confirm', 'ConfirmEmailController@index')->name('confirm-email');
+
+Route::middleware('admin')->prefix('admin') ->group(function () {
+    Route::resource('series', 'SeriesController');
 });
+
+// Route::prefix

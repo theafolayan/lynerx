@@ -1,10 +1,10 @@
 @component('mail::message')
-# Introduction
+# One More Step
 
-The body of your message.
+Please confirm your Email address
 
-@component('mail::button', ['url' => ''])
-Button Text
+@component('mail::button', ['url' => route('confirm-email').'?token='.$user->confirm_token])
+Confirm your Email
 @endcomponent
 
 Thanks,<br>

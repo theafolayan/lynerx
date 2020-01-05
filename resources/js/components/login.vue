@@ -16,11 +16,11 @@
           {{errors[0]}}
         </div>
         <div class="form-group">
-          <input type="email" class="form-control" placeholder="Email" v-model="email" autocomplete="true">
+          <input type="email" class="form-control" placeholder="Email" v-model="email" name="email" autocomplete="true">
         </div>
 
         <div class="form-group">
-          <input type="password" class="form-control" placeholsder="*******" v-model="password" autocomplete="current-password">
+          <input type="password" class="form-control" placeholder="*******" v-model="password" autocomplete="current-password">
         </div>
 
         <div class="form-group flexbox py-10">

@@ -1,7 +1,7 @@
 <?php
 
 namespace Lynerx\Providers;
-
+use Lynerx\Series;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +23,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
+        Route::model('series_by_id', Series::class);
+        Route::bind('series_by_id', function($value){
+            return Series::findOrFail($value);
+        });
     }
 
     /**

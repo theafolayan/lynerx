@@ -23,7 +23,7 @@
      <div class="section">
        <ul class="list-group">
          <li class="list-group-item">
-           {{$series->lessons->first()->title}}
+         <vue-lessons default_lessons = "{{$series->lessons}}" series_id="{{$series->id}}"> </vue-lessons>
          </li>
        </ul>
       </div>

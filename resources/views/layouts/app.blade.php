@@ -31,7 +31,7 @@
               
               <div class="topbar-left">
                 <button class="topbar-toggler">&#9776;</button>
-                <a class="topbar-brand" href="index.html">
+              <a class="topbar-brand" href="{{route('homepage')}}">
                 <img class="logo-default" src="{{asset('logo-dark.png')}}" alt="logo">
                   <img class="logo-inverse" src="{{asset('logo-dark.png')}}" alt="logo">
                 </a>
@@ -40,10 +40,10 @@
       
               <div class="topbar-right">
                 <ul class="topbar-nav nav">
-                  <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link active " href="{{route('homepage')}}">Home</a></li>
                  
                   @if (auth()->check())
-                <li class="nav-item">Hey {{auth()->user()->name}}</li>
+                <li class="nav-item text-dark">Hey {{auth()->user()->name}}</li>
                 <a class="nav-item" href="{{route('logout')}}" >LOGOUT</a>
                   
                   @else

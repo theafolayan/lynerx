@@ -16,7 +16,7 @@
 // });
  Route::get('/', function () {
      return view('welcome');
- });
+ })->name('homepage');
 Route::get('/logout', function () {
     auth()->logout();
     return redirect('/');
@@ -24,13 +24,16 @@ Route::get('/logout', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/test', function(){
-    return view('layouts.app');
-}); 
+
 Route::get('/register/confirm', 'ConfirmEmailController@index')->name('confirm-email');
+
+Route::get('{series_by_id}', function (\Lynerx\Series $series) {
+    dd($series);
+});
 
 Route::middleware('admin')->prefix('admin') ->group(function () {
     Route::resource('series', 'SeriesController');
+    Route::resource('{series_by_id}/lessons', 'LessonsController');
 });
 
 // Route::prefix

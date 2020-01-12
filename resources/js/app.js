@@ -20,6 +20,9 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('vue-login', require('./components/login.vue').default);
+Vue.component('vue-lessons', require('./components/Lessons.vue').default);  
+
+Vue.component('create-lesson', require('./components/children/CreateLesson.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

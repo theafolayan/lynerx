@@ -47,8 +47,7 @@ class RegisterationTest extends TestCase
         
     }
 
-    public function test_user_has_registeration_token()
-    {
+    public function test_user_has_registeration_token(){
         Mail::fake();
         $this->withoutExceptionHandling();
         $this->post('/register', [

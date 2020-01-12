@@ -33,7 +33,7 @@
         </div>
 
         <div class="form-group">
-          <button class="btn btn-bold btn-block btn-primary"  :disabled="!isValidLoginForm" @click="attemptLogin">Login</button>
+          <button class="btn btn-bold btn-block btn-success"  :disabled="!isValidLoginForm" @click="attemptLogin">Login</button>
         </div>
       </form>
       <p class="text-center text-muted fs-13 mt-20">Don't have an account? 

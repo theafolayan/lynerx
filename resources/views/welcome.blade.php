@@ -2,7 +2,7 @@
 
 @section('header')
 
-<header class="header fadeout header-inverse pb-80 h-fullscreen" style="background-image: url('https://images.unsplash.com/photo-1497091071254-cc9b2ba7c48a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=753&q=80' );">
+<header class="header fadeout header-inverse pb-80 h-fullscreen" style="background-image: url('{{asset('img/hand.jpg')}}' );">
     <canvas class="constellation"></canvas>
 
     <div class="container">
@@ -16,8 +16,13 @@
           <br>
           <hr class="w-60 hidden-sm-down">
           <br>
-          <a class="btn btn-xl btn-round btn-primary fs-20 fw-500 w-350 shadow-3 hidden-sm-down" href="{{route('register')}}">Sign Up Now</a>
-        <a class="btn btn-lg btn-round btn-warning w-250 shadow-3 hidden-md-up" href="{{route('register')}}">Sign Up Now</a>
+       @if (auth()->check())
+              <a class="btn btn-xl btn-round btn-success fs-20 fw-500 w-350 shadow-3 hidden-sm-down" href="{{route('register')}}">Continue Learning</a>
+        <a class="btn btn-lg btn-round btn-success w-250 shadow-3 hidden-md-up" href="{{route('register')}}">Continue Learning</a>
+       @else
+        <a class="btn btn-xl btn-round btn-success fs-20 fw-500 w-350 shadow-3 hidden-sm-down" href="{{route('register')}}">Sign Up Now</a>
+        <a class="btn btn-lg btn-round btn-success w-250 shadow-3 hidden-md-up" href="{{route('register')}}">Sign Up Now</a>
+       @endif
           <br>
           </div>
 
@@ -26,9 +31,10 @@
         </div>
       </div>
     </div>
+    </header>
     {{-- @if (session->has('success'))
         
-    @endif  </header> --}}
+    @endif   --}}
   <!-- END Header -->
 
 

@@ -64,6 +64,7 @@ class SeriesController extends Controller
     public function show(Series $series)
     {
         // dd($series);
+
         return view('admin.series.index')->withSeries($series);
     }
 

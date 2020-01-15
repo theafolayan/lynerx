@@ -6,7 +6,7 @@
           <li class="list-group-item d-flex justify-content-between" v-for="lesson in lessons">
               <p>{{lesson.title}}</p> 
               <p>
-                  <button class="btn btn-primary btn-xs" @click="updateLesson(lesson)"> Edit</button>
+                  <button class="btn btn-primary btn-xs" @click="editLesson(lesson)"> Edit</button>
                   <button class="btn btn-danger btn-xs" @click="deleteLesson(lesson.id)"> Delete</button>
               </p>
           </li>
@@ -24,10 +24,16 @@ export default {
     mounted() {
         this.$on('lesson_created', lesson =>{
              this.lessons.push(lesson)
-        });
+        }); 
         this.$on('lesson_deleted', lesson =>{
              this.lessons.pop(lesson)
-        })
+        });
+        this.$on('lesson_updated', lesson=>{
+            const lessonIndex = this.lessons.findIndex(l =>{
+                return lesson.id = l.id;
+            });
+            this.lessons.splice(lessonIndex, 1, lesson);
+        });
     },
     components: {
         // "create-lesson": require('./children/CreateLesson.vue')
@@ -56,9 +62,9 @@ export default {
                 })
             }
         },
-        updateLesson(lesson){
+        editLesson(lesson){
             let seriesId = this.series_id;
-            this.$emit('edit_lesson', lesson)
+            this.$emit('edit_lesson', {lesson, seriesId})
             // this.editing = true;
         }
     },

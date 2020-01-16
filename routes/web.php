@@ -14,9 +14,16 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
- Route::get('/', function () {
+
+use Lynerx\Series;
+
+Route::get('/', function () {
      return view('welcome');
  })->name('homepage');
+Route::get('/series', function (\Lynerx\Series $series ) {
+    $series = Series::all();
+    return view('series')->withSeries($series);
+})->name('series');
 Route::get('/logout', function () {
     auth()->logout();
     return redirect('/');

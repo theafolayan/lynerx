@@ -20,7 +20,7 @@
         </div>
 
         <div class="form-group">
-          <input type="password" class="form-control" placeholder="*******" v-model="password" autocomplete="current-password">
+          <input type="password" class="form-control" placeholder="Enter your password" v-model="password" autocomplete="current-password">
         </div>
 
         <div class="form-group flexbox py-10">

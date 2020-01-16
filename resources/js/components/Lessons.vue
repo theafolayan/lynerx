@@ -22,10 +22,18 @@ export default {
     
     props: ['default_lessons', 'series_id'],
     mounted() {
-        this.$on('lesson_created', lesson =>{
+        this.$on('lesson_created', (lesson) =>{
+            window.noty({
+                message: 'Lesson Created sucesfully!',
+                type: 'success'
+            });
              this.lessons.push(lesson)
         }); 
         this.$on('lesson_deleted', lesson =>{
+               window.noty({
+                message: 'Lesson deleted!',
+                type: 'danger'
+            });
              this.lessons.pop(lesson)
         });
         this.$on('lesson_updated', lesson=>{
@@ -55,10 +63,22 @@ export default {
         deleteLesson(id){
             if (confirm('Are you sure you want to delete this Lesson? ')) {
                 Axios.delete(`/admin/${this.series_id}/lessons/${id}/`).then(response=>{
-                    console.log(response);
+                    console.log(response.status);
                     this.$emit('lesson_deleted', response.data )
                 }).catch(error=>{
-                    console.log(error);
+                   console.log(error.response.status)
+                if (error.response.status = 422) {
+                    window.noty({
+                    message: 'We were not able to process your input, Please check your input and try again or try refreshing!',
+                    type: 'danger'
+                    });
+                }else if(error.response.status = 500){
+                    window.noty({
+                    message: 'There seems to be a server error, or your token has expired, Please refresh and try again.',
+                    type: 'danger'
+                    })
+                 }
+                    
                 })
             }
         },

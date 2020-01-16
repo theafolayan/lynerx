@@ -5,7 +5,6 @@
 namespace Lynerx\Http\Controllers;
 use Lynerx\Lesson;
 use Lynerx\Series;
-
 use Illuminate\Http\Request;
 
 class LessonsController extends Controller

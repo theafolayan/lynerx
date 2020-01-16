@@ -81,8 +81,23 @@ export default {
             .then(response =>{
                 this.$parent.$emit('lesson_created', response.data);
                 $('#CreateLessonModal').modal('hide');
+                window.noty({
+                message: 'Lesson Created sucesfully!',
+                type: 'success'
+            });
             }).catch(error =>{
-                console.log(error)
+                console.log(error.response.status)
+                if (error.response.status = 422) {
+                    window.noty({
+                    message: 'We were not able to process your input, Please check your input and try again!',
+                    type: 'danger'
+                    });
+                }else if(error.response.status = 500){
+                    window.noty({
+                    message: 'There seems to be a server error, or your token has expired, Please refresh and try again.',
+                    type: 'danger'
+                    })
+                 }
             });
             // this.title= '';
             // this.description= '';
@@ -98,8 +113,23 @@ export default {
                 console.log(response)
                 $('#CreateLessonModal').modal('hide');
                 this.$parent.$emit('lesson_updated', response.data)
+                window.noty({
+                message: 'Lesson Updated sucesfully!',
+                type: 'success'
+            });
             } ).catch(error=>{
-                console.log(error)
+                console.log(error.response.status)
+                if (error.response.status = 422) {
+                    window.noty({
+                    message: 'We were not able to process your input, Please check your input and try again!',
+                    type: 'danger'
+                    });
+                }else if(error.response.status = 500){
+                    window.noty({
+                    message: 'There seems to be a server error, or your token has expired, Please refresh and try again.',
+                    type: 'danger'
+                    })
+                 }
             })
         }
     }

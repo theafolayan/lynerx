@@ -1,5 +1,11 @@
 <?php
 
+## TODO 
+#Add Update Validation 
+#Upload Image from Update Series Form
+#add Create Validation
+
+
 namespace Lynerx\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -42,7 +48,7 @@ class SeriesController extends Controller
         //upload file
         $fileName = Str::slug($request->title).'.'.$uploadedImage->getClientOriginalExtension();
 
-        $uploadedImage->storePubliclyAs('series', $fileName);
+        $uploadedImage->storePubliclyAs('public/series', $fileName);
         //Create series
         $series = Series::create([
             'title'=> $request->title,
@@ -74,9 +80,9 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Series $series)
     {
-        //
+        return view('admin.series.edit')->withSeries($series);
     }
 
     /**
@@ -86,9 +92,17 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Series $series)
     {
-        //
+        if ($request->hasFile('image')){
+            $request->uploadSeriesImage();
+        }
+        $series->title = $request->title;
+        $series->description = $request->description;
+        $series->slug = Str::slug($request->title);
+        $series->save();
+        session()->flash('success', 'Series Updated Successfully..');
+        return redirect()->route('series.show', $series->slug);
     }
 
     /**
@@ -97,8 +111,9 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Series $series)
     {
-        //
+        $series->delete();
+        return redirect('series.index');
     }
 }

@@ -17,8 +17,9 @@
 
 use Lynerx\Series;
 
-Route::get('/', function () {
-     return view('welcome');
+Route::get('/', function (\Lynerx\Series $series) {
+        $series = Series::all();
+     return view('welcome')->withSeries($series);
  })->name('homepage');
 Route::get('/series', function (\Lynerx\Series $series ) {
     $series = Series::all();

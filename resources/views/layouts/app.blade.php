@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Lynerx') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -56,6 +56,15 @@
                     
                   </li>
                   @endif
+                  @if(auth()->user()->isAdmin())
+                <li class="nav-item">
+                  <a class="nav-link" href="{{route('series.index')}}" >ALl Series</a>                   
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{route('series.create')}}" >Create New Series</a>                   
+                </li>
+                  @endif
+
                   
       
                 

@@ -8,7 +8,7 @@
             @foreach ($series as $series)
                 <div class="col-12 col-md-6 col-lg-4">
               <div class="card card-hover-shadow">
-              {{-- <a href="blog-single.html"><img class="card-img-top" src="{{asset('storage/').$series->image_url}}" alt="Card image cap"></a> --}}
+              <a href="blog-single.html"><img class="card-img-top" src="{{asset('storage/').'/'.$series->image_url}}" alt="Card image cap"></a>
                 <div class="card-block">
                 <h4 class="card-title">{{$series->title}}</h4>
                 <p class="card-text">{{$series->description}}</p>

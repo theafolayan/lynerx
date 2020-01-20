@@ -38,6 +38,9 @@ Auth::routes();
 
 Route::get('/register/confirm', 'ConfirmEmailController@index')->name('confirm-email');
 
+Route::get('watch/{series}', 'WatchSeriesController@index')->name('series.learningPage');
+Route::get('series/{series}/lesson/{lesson}', 'WatchSeriesController@showLesson')->name('series.watch'); 
+
 Route::middleware('admin')->prefix('admin') ->group(function () {
     Route::resource('series', 'SeriesController');
     Route::resource('{series_by_id}/lessons', 'LessonsController');

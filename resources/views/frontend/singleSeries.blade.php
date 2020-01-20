@@ -15,7 +15,7 @@
                 @if(auth()->user()->hasStartedSeries($series))
                 <a href="#" class="btn btn-lg btn-primary mr-16 btn-round">Continue Lesson</a>
                 @else
-                <a href="#" class="btn btn-lg btn-primary mr-16 btn-round">Start Learning</a>
+                <a href="{{route('series.learningPage',$series->slug)}}" class="btn btn-lg btn-primary mr-16 btn-round">Start Learning</a>
                 <br><br>
                 @endif
             @else

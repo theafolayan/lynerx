@@ -7,15 +7,15 @@
         <div class="row h-full">
           <div class="col-12 col-lg-8 offset-lg-2 align-self-center">
 
-            <h1 class="display-4 hidden-sm-down">Create Professional Websites</h1>
-            <h1 class="hidden-md-up">Create Professional Websites</h1>
+            <h1 class="display-4 hidden-sm-down">Learn Any Skill You Want</h1>
+            <h1 class="hidden-md-up">Learn Any Skill You Want</h1>
             <br>
-            <p class="lead text-white fs-20 hidden-sm-down"><span class="fw-400">TheSaaS</span> is a responsive, professional, and multipurpose<br> SaaS template powered with <span class="mark-border">Bootstrap 4</span>.</p>
+            <p class="lead text-white fs-20 hidden-sm-down"><span class="fw-400">Lynerx</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. A ipsam dolore explicabo quo, at, impedit odio blanditiis ex </p>
 
             <br><br><br>
 
-            <a class="btn btn-lg btn-round w-200 btn-primary mr-16" href="#" data-scrollto="section-intro">Demos</a>
-            <a class="btn btn-lg btn-round w-200 btn-outline btn-white hidden-sm-down" href="#" data-scrollto="section-intro">Features</a>
+            <a class="btn btn-lg btn-round w-200 btn-primary mr-16" href="/register" data-scrollto="section-intro">Get Started</a>
+            <a class="btn btn-lg btn-round w-200 btn-outline btn-white hidden-sm-down" href="/series" data-scrollto="section-intro">Explore Courses</a>
 
           </div>
 
@@ -37,13 +37,13 @@
      <div class="row ">
             
             @foreach ($series as $series)
-                <div class="col-12 col-md-6 col-lg-4">
+              <div class="col-12 col-md-6 col-lg-4">
               <div class="card card-hover-shadow">
               <a href="blog-single.html"><img class="card-img-top" src="{{asset('storage/').'/'.$series->image_url}}" alt="Card image cap" width="100%" height="100%"></a>
                 <div class="card-block">
                 <h4 class="card-title">{{$series->title}}</h4>
                 <p class="card-text">{{$series->description}}</p>
-                <a class="fw-600 fs-12" href="{{'/series/'. $series->slug}}">View Series <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
+                <a class="fw-600 fs-12 btn btn-success" href="{{'/series/'. $series->slug}}">View Series <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
                 </div>
               </div>
             </div>

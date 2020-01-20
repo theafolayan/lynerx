@@ -7,13 +7,24 @@
         <div class="row h-full">
           <div class="col-12 col-lg-8 offset-lg-2 align-self-center">
 
-            <p class="opacity-70">News</p>
-            <br>
           <h1 class="display-4 hidden-sm-down">{{$series->title}}</h1>
+          <br>
           <h1 class="hidden-md-up">{{$series->title}}</h1>
-            <br><br>
-            <p><span class="opacity-70 mr-8">By</span> <a class="text-white" href="#">Lynerx</a></p>
-            <p><img class="rounded-circle w-40" src="assets/img/avatar/2.jpg" alt="Lynerx Logo"></p>
+          <br>
+            @if(auth()->check())
+                @if(auth()->user()->hasStartedSeries($series))
+                <a href="#" class="btn btn-lg btn-primary mr-16 btn-round">Continue Lesson</a>
+                @else
+                <a href="#" class="btn btn-lg btn-primary mr-16 btn-round">Start Learning</a>
+                <br><br>
+                @endif
+            @else
+            <a href="#" class="btn btn-lg btn-primary mr-16 btn-round">Start Learning</a>
+            @endif
+            
+            <br>
+            <p><span class="opacity-70 mr-8">{{$series->description}}</span> </p>
+            
 
           </div>
 
@@ -37,7 +48,7 @@
           <div class="row">
             <div class="col-12 col-lg-8 offset-lg-2">
               
-            <p class="lead"> {{$series->description}}</p>
+            
 
               <hr class="w-100">
 

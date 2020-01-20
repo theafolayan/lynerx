@@ -18,7 +18,7 @@ class FrontendController extends Controller
 
     public function showHomepage()
     {
-        $series = \Lynerx\Series::orderBy('id', 'desc')->take(5)->get();
+        $series = \Lynerx\Series::orderBy('id', 'desc')->take(6)->get();
         return view('frontend.welcome')->withSeries($series);
     }
 }

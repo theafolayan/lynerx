@@ -27,6 +27,7 @@ window.noty = function(notification) {
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('vue-login', require('./components/login.vue').default);
+Vue.component('vue-player', require('./components/player.vue').default);
 Vue.component('vue-lessons', require('./components/Lessons.vue').default); 
 Vue.component('vue-noty', require('./components/Noty.vue').default); 
 

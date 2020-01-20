@@ -14,11 +14,16 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+use Illuminate\Support\Facades\Redis;
 
 use Lynerx\Series;
+Route::get('/redis', function () {
+   dd(Redis::get('baba')); 
+
+});
 
 Route::get('/', function (\Lynerx\Series $series) {
-        $series = Series::all();
+        $series = Series::orderBy('id', 'desc')->take(5)->get();
      return view('welcome')->withSeries($series);
  })->name('homepage');
 Route::get('/series', function (\Lynerx\Series $series ) {

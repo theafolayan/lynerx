@@ -43,8 +43,17 @@
                 <li class="nav-item"><a class="nav-link active " href="{{route('homepage')}}">Home</a></li>
                  
                   @if (auth()->check())
-                <li class="nav-item text-dark">Hey {{auth()->user()->name}}</li>
+                <li class="nav-item ">HEY {{auth()->user()->name}}</li>
                 <a class="nav-item" href="{{route('logout')}}" >LOGOUT</a>
+                  @if(auth()->user()->isAdmin())
+                <li class="nav-item">
+                  <a class="nav-link" href="{{route('series.index')}}" >ALl Series</a>                   
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{route('series.create')}}" >Create New Series</a>                   
+                </li>
+                  @endif
+
                   
                   @else
                       <li class="nav-item">
@@ -56,15 +65,7 @@
                     
                   </li>
                   @endif
-                  @if(auth()->user()->isAdmin())
-                <li class="nav-item">
-                  <a class="nav-link" href="{{route('series.index')}}" >ALl Series</a>                   
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{route('series.create')}}" >Create New Series</a>                   
-                </li>
-                  @endif
-
+                
                   
       
                 

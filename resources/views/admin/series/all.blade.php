@@ -37,7 +37,7 @@
                     <tr>
                     <td>{{$s->title}}</td>
                     <td> <a href="{{route('series.edit', $s->slug)}}"><button class="btn btn-primary" >Edit</button></a></td>
-                    <td> <a href="{{route('series.destroy', $s)}}"><button class="btn btn-danger">Delete</button></a></td>
+                    <td> <a href="{{route('series.destroy', $s->slug)}}"><button class="btn btn-danger">Delete</button></a></td>
                     </tr>
                     @empty
                     <p class="text-center"> No Series Created Yet!</p>

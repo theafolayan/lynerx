@@ -9,10 +9,19 @@ class WatchSeriesController extends Controller
 {
     public function index(Series $series)
     {
-       return redirect()->route('series.watch', [
-            'series' => $series->slug,
-            'lesson' => $series->lessons->first()->id
-       ]);
+        $theLesson = $series->lessons->first()->id;
+        if(count($series->lessons)>1){
+         $lesson = 'No Lesson available';
+        }
+        else{
+
+            return redirect()->route('series.watch', [
+                'series' => $series->slug,
+                'lesson' => $theLesson
+
+            ]);
+        }
+       
     }
 
     public function showLesson(Series $series, Lesson $lesson)

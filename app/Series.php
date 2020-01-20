@@ -17,5 +17,10 @@ class Series extends Model
         return $this->hasMany(Lesson::class);
     }
 
+    public function getOrderedLessons()
+    {
+        return $this->lessons()->orderBy('episode_number', 'asc')->get();
+    }
+
 }
 

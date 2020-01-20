@@ -43,7 +43,7 @@
                 <div class="card-block">
                 <h4 class="card-title">{{$series->title}}</h4>
                 <p class="card-text">{{$series->description}}</p>
-                  <a class="fw-600 fs-12" href="blog-single.html">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
+                <a class="fw-600 fs-12" href="{{'/series/'. $series->slug}}">View Series <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
                 </div>
               </div>
             </div>

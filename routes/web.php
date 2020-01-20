@@ -22,27 +22,21 @@ Route::get('/redis', function () {
 
 });
 
-Route::get('/', function (\Lynerx\Series $series) {
-        $series = Series::orderBy('id', 'desc')->take(5)->get();
-     return view('welcome')->withSeries($series);
- })->name('homepage');
-Route::get('/series', function (\Lynerx\Series $series ) {
-    $series = Series::all();
-    return view('series')->withSeries($series);
-})->name('series');
+Route::get('/', 'FrontendController@showHomepage')->name('homepage');
+Route::get('/series', 'FrontendController@listAllSeries' )->name('home');
+    
 Route::get('/logout', function () {
     auth()->logout();
     return redirect('/');
 });
+
+Route::get('series/{series}', 'FrontendController@showSingleSeries');
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/register/confirm', 'ConfirmEmailController@index')->name('confirm-email');
-
-Route::get('{series_by_id}', function (\Lynerx\Series $series) {
-    dd($series);
-});
 
 Route::middleware('admin')->prefix('admin') ->group(function () {
     Route::resource('series', 'SeriesController');

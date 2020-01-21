@@ -21,12 +21,31 @@
       </div>
     </header>
 
-    <section class="bg-grey">
+    <section class=" section bg-grey">
         <div class="container">
           <div class="row gap-y text-center">
-            <div class="col-12">
-                <vue-player default_lesson ={{$lesson}}> </vue-player>
-            </div>
+        <div class="col-12">
+
+          <vue-player default_lesson ="{{$lesson}}"> 
+          </vue-player>
+
+          @if($lesson->getNextLesson())
+            <a href="{{route('series.watch', ['series'=> $series->slug, 'lesson'=> $lesson->getNextLesson()->id])}}" class="btn btn-info">Next Lesson</a>
+          @endif
+
+          @if($lesson->getPreviousLesson())
+            <a href="{{route('series.watch', ['series'=> $series->slug, 'lesson'=> $lesson->getPreviousLesson()->id])}}" class="btn btn-info">Previous Lesson</a>
+          @endif 
+            
+
+        </div>
+        <div class="col-12">
+          <ul class="list-group">
+            @foreach ($series->getOrderedLessons() as $l)
+          <li class="list-group-item"> <a href="{{route('series.watch', ['lesson'=>$l->id, 'series'=> $series->slug])}}">{{$l->title}}</a></li>
+            @endforeach
+          </ul>
+        </div>
           </div>
         </div>
     </section>

@@ -21,14 +21,16 @@ class Series extends Model
     {
         return $this->lessons()->orderBy('episode_number', 'asc')->get();
     }
-    public function getNextLesson()
-    {
-       return $this->series->lessons()->where('episode_number', '>' );
-    }
-    public function getPreviousLesson($lesson)
-    {
-        
-    }
+    // public function getNextLesson()
+    // {
+    //    return $this->series->lessons()->where('episode_number', '>' , $this->episode_number )
+    //    ->orderBy('episode_number', 'asc')->first();
+    // }
+    // public function getPreviousLesson($lesson)
+    // {
+    //     return $this->series->lessons()->where('episode_number', '<', $this->episode_number)
+    //         ->orderBy('episode_number', 'desc')->first();
+    // }
 
 }
 

@@ -10,7 +10,7 @@ class WatchSeriesController extends Controller
     public function index(Series $series)
     {
         $theLesson = $series->lessons->first()->id;
-        if(count($series->lessons)>1){
+        if(count($series->lessons)<1){
          $lesson = 'No Lesson available';
         }
         else{

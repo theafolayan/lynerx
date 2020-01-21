@@ -1,6 +1,6 @@
 <template>
     <div>
-       <div :data-vimeo-id="lesson.video_id" data-video-width ="640" id="handstick" v-if="lesson"> </div>
+       <div :data-vimeo-id="lesson.video_id" data-video-width ="1240" id="handstick" v-if="lesson"> </div>
     </div>
 </template>
     

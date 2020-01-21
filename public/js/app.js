@@ -40916,7 +40916,7 @@ var render = function() {
       ? _c("div", {
           attrs: {
             "data-vimeo-id": _vm.lesson.video_id,
-            "data-video-width": "640",
+            "data-video-width": "1240",
             id: "handstick"
           }
         })

@@ -2,8 +2,10 @@
 
 namespace Lynerx\Http\Controllers;
 
+use Illuminate\Support\Facades\Redis;
 use Lynerx\Series;
 use Lynerx\Lesson;
+use Lynerx\User;
 
 class WatchSeriesController extends Controller
 {
@@ -31,11 +33,12 @@ class WatchSeriesController extends Controller
         return view('frontend.watchLesson', [
             'series' => $series,
             'lesson' => $lesson
-        ]);
+    ]);
     }
     public function completeLesson(Lesson $lesson)
     {
         auth()->user()->completeLesson($lesson);
+        dd(Redis::smembers("user:{auth()->user():series*}"));
         response()->json(['status' => 'ok']);
     }
 }

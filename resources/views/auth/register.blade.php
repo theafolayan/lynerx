@@ -1,29 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+@extends('layouts.app');
 
-    <title>Lynernx - Register</title>
-
-    <!-- Styles --><link href="{{ asset('css/core.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/thesaas.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-  
-
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-    <link rel="icon" href="assets/img/favicon.png">
-  </head>
-
-  <body class="mh-fullscreen bg-img center-vh p-20" style="background-image: url(assets/img/bg-girl.jpg);">
-
-
-
-
-    <div class="card card-shadowed p-50 w-400 mb-0" style="max-width: 100%">
+@section('content')
+ <div class="row">
+   <div class="col col-lg-4"></div>
+   <div class="col col-lg-4">
+     <div class="card card-shadowed text-center p-50 " style="">
       <h5 class="text-uppercase text-center">Register</h5>
       <br><br>
 
@@ -80,14 +61,10 @@
       <hr class="w-30">
 
       <p class="text-center text-muted fs-13 mt-20">Already have an account? <a href="page-login.html">Sign in</a></p>
-    </div>
+   </div>
+   </div>
+    <div class="col col-lg-4"></div>
+ </div>
 
 
-
-
-    <!-- Scripts -->
-    <script src="{{asset('js/core.min.js')}}"></script>
-    <script src="{{asset('js/thesaas.min.js')}}"></script>
-    <script src="{{asset('js/script.js')}}"></script>
-  </body>
-</html>
+@endsection

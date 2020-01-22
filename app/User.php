@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Redis;
+use Lynerx\Series;
 
 class User extends Authenticatable
 {
@@ -50,7 +51,10 @@ class User extends Authenticatable
       return in_array($this->email, config('Lynerx.administrators'));
     }
     public function completeLesson($lesson){
-        Redis::sadd("user:{$this->id}: series:{$lesson->series_id}", $lesson->id);
+        // dd("user:{$this->id}:series:{$lesson->series->id}");
+        Redis::sadd("user:{$this->id}:series:{$lesson->series->id}", $lesson->id);
+        //  dd("user:{$this->id}:series:{$lesson->series->id}");
+        // dd(Redis::smembers("user"));
     }
     public function percentageCompletedForSeries($series){
         $numberOfLessonsInSeries = $series->lessons->count();
@@ -75,5 +79,38 @@ class User extends Authenticatable
     }
     public function hasCompletedLesson($lesson){
          return in_array($lesson->id, $this->getCompletedLessonsForASeries($lesson->series));
+    }
+
+    public function seriesBeingWatchedIds()
+    {
+        $keys = Redis::keys("user:{$this->id}:series:*");
+        $seriesIds = [];
+        foreach ($keys as $key) {
+            # code...
+            $seriesId =  explode(':', $key);
+            array_push($seriesIds, $seriesId);
+        }
+
+        return $seriesIds;
+    }
+    public function seriesBeingWatched(){
+        # code...
+      
+
+        return collect($this->seriesBeingWatchedIds())->map(function($id){
+            return Series::find($id);
+        });
+
+    }
+    public function getTotalNumberOfCompletedLessons()
+    {
+        $keys = Redis::keys("user:{$this->id}:series:*");
+        $result = 0;
+        foreach ($keys as $key ) {
+            # code...
+            $result += count(Redis::smembers($key));
+        }
+        return $result;
+    
     }
 }

@@ -1,23 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+ <!-- Header -->
+    <header class="header header-inverse" style="background-color: #385B2B;">
+      <div class="container text-center">
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+        <div class="row">
+          <div class="col-12 col-lg-8 offset-lg-2">
 
-                    You are logged in!
-                </div>
-            </div>
+          <h1>{{auth()->user()->name}}</h1>
+            <p class="fs-20"><i class="fa fa-map-marker mr-8"></i> {{auth()->user()->email}}</p>
+
+            <hr class="w-50 ">
+                        <p class="fs-20"> {{auth()->user()->getTotalNumberOfCompletedLessons()}}</p>
+
+
+            <a class="btn btn-xl btn-round btn-white w-200" href="#" data-scrollto="section-apply">Apply Now</a>
+
+          </div>
         </div>
-    </div>
-</div>
+
+      </div>
+    </header>
+    <!-- END Header -->
 @endsection

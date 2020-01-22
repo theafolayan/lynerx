@@ -34,8 +34,9 @@ Route::get('series/{series}', 'FrontendController@showSingleSeries');
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
-  
+Route::post('/series/complete-lesson/{lesson}', 'WatchSeriesController@completeLesson');
+// Route::get('/home', 'HomeController@index')->name('home');'
+
 Route::get('/register/confirm', 'ConfirmEmailController@index')->name('confirm-email');
 
 Route::get('watch/{series}', 'WatchSeriesController@index')->name('series.learningPage');

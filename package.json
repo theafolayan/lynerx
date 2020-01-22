@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "@vimeo/player": "^2.10.0"
+        "@vimeo/player": "^2.10.0",
+        "sweetalert2": "^9.6.1"
     }
 }

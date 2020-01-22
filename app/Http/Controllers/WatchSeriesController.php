@@ -9,11 +9,13 @@ class WatchSeriesController extends Controller
 {
     public function index(Series $series)
     {
-        $theLesson = $series->lessons->first()->id;
+        
         if(count($series->lessons)<1){
-         $lesson = 'No Lesson available';
+        //  $theLesson = ['id'=> '1', 'episode_number' => '0'];
+        return 'No lesson on this series Yet!';
         }
         else{
+            $theLesson = $series->lessons->first()->id;
 
             return redirect()->route('series.watch', [
                 'series' => $series->slug,
@@ -30,5 +32,10 @@ class WatchSeriesController extends Controller
             'series' => $series,
             'lesson' => $lesson
         ]);
+    }
+    public function completeLesson(Lesson $lesson)
+    {
+        auth()->user()->completeLesson($lesson);
+        response()->json(['status' => 'ok']);
     }
 }

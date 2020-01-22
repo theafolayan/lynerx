@@ -36,8 +36,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-
     public function isConfirmed()
     {
         return $this->confirm_token == null;
@@ -48,12 +46,10 @@ class User extends Authenticatable
         $this->confirm_token = null;
         $this->save();
     }
-    public function isAdmin()
-    {
+    public function isAdmin(){
       return in_array($this->email, config('Lynerx.administrators'));
     }
-    public function completeLesson($lesson)
-    {
+    public function completeLesson($lesson){
         Redis::sadd("user:{$this->id}: series:{$lesson->series_id}", $lesson->id);
     }
     public function percentageCompletedForSeries($series){
@@ -61,25 +57,23 @@ class User extends Authenticatable
         $numberOfCompletedLessons = $this->getNumberOfCompletedLessonsForASeries;
         return ($numberOfLessonsInSeries / $numberOfLessonsInSeries) *100;
     }
-    public function getNumberOfCompletedLessonsForASeries($series)
-    {
+    public function getNumberOfCompletedLessonsForASeries($series){
        return count($this->getCompletedLessonsForASeries($series));
     }
-
-    public function getCompletedLessonsForASeries($series)
-    {
+    public function getCompletedLessonsForASeries($series){
        return Redis::smembers("user:{$this->id}: series:{$series->id}");
     }
-    public function hasStartedSeries($series)
-    {
+    public function hasStartedSeries($series){
         return $this->getNumberOfCompletedLessonsForASeries($series) > 0;
-    }
-    public function getCompletedLessons($series)
-    {
+    } 
+    public function getCompletedLessons($series){
         $completedLessons = $this->getCompletedLessonsForASeries($series);
 
         return collect($completedLessons)->map(function($lessonId){
             return Lesson::find($lessonId);
         });
+    }
+    public function hasCompletedLesson($lesson){
+         return in_array($lesson->id, $this->getCompletedLessonsForASeries($lesson->series));
     }
 }

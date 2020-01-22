@@ -23,17 +23,24 @@
 
     <section class=" section bg-grey">
         <div class="container">
+          @php
+              $nextLesson = $lesson->getNextLesson();
+              $previousLesson = $lesson->getPreviousLesson();
+          @endphp
           <div class="row gap-y text-center">
         <div class="col-12">
 
-          <vue-player default_lesson ="{{$lesson}}"> 
+        <vue-player default_lesson ="{{$lesson}}" @if ($nextLesson)
+            next_lesson_url = "{{route('series.watch', ['series'=> $series->slug, 'lesson'=> $nextLesson->id])}}"
+        @endif> 
           </vue-player>
+          
 
-          @if($lesson->getNextLesson())
+          @if($nextLesson)
             <a href="{{route('series.watch', ['series'=> $series->slug, 'lesson'=> $lesson->getNextLesson()->id])}}" class="btn btn-info">Next Lesson</a>
           @endif
 
-          @if($lesson->getPreviousLesson())
+          @if($previousLesson)
             <a href="{{route('series.watch', ['series'=> $series->slug, 'lesson'=> $lesson->getPreviousLesson()->id])}}" class="btn btn-info">Previous Lesson</a>
           @endif 
             
@@ -42,7 +49,14 @@
         <div class="col-12">
           <ul class="list-group">
             @foreach ($series->getOrderedLessons() as $l)
-          <li class="list-group-item"> <a href="{{route('series.watch', ['lesson'=>$l->id, 'series'=> $series->slug])}}">{{$l->title}}</a></li>
+          <li class="list-group-item @if($l->id == $lesson->id)
+          {{"active"}}
+          @endif
+          ">
+          @if(auth()->user()->hasCompletedLesson($l))
+            <strong> <small> Completed</small> </strong>
+          @endif
+          <a href="{{route('series.watch', ['lesson'=>$l->id, 'series'=> $series->slug])}}">{{$l->title}} {{$lesson->id}}</a></li>
             @endforeach
           </ul>
         </div>

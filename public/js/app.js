@@ -4443,22 +4443,19 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     // this.displayVideoEndedAlert();
-    this.completeLesson();
     var player = new _vimeo_player__WEBPACK_IMPORTED_MODULE_0__["default"]('handstick');
     player.on('play', function () {
       console.log('video is playing');
     });
     player.on('ended', function () {
+      _this.completeLesson();
+
       _this.displayVideoEndedAlert();
     });
   },
   methods: {
     displayVideoEndedAlert: function displayVideoEndedAlert() {
-      sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Yay, You just completed this lesson!'); // console.log('baba')
-      // .then(()=>{
-      //     // console.log(this.next_lesson);
-      //     window.location = this.next_lesson_url;
-      // });
+      sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Yay, You just completed this lesson!');
     },
     completeLesson: function completeLesson() {
       var _this2 = this;

@@ -19,24 +19,22 @@ data(){
     },
     mounted(){
         // this.displayVideoEndedAlert();
-        this.completeLesson();
+       
         const player = new Player('handstick');
 
         player.on('play', ()=>{
             console.log('video is playing');
         });
         player.on('ended', ()=>{
+             this.completeLesson();
             this.displayVideoEndedAlert();
+            
         });
     },
     methods: {
         displayVideoEndedAlert(){
             Swal.fire('Yay, You just completed this lesson!')
-            // console.log('baba')
-            // .then(()=>{
-            //     // console.log(this.next_lesson);
-            //     window.location = this.next_lesson_url;
-            // });
+           
         },
         completeLesson(){
             Axios.post(`/series/complete-lesson/ ${this.lesson.id}`, {})

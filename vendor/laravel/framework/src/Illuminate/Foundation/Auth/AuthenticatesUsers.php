@@ -3,9 +3,12 @@
 namespace Illuminate\Foundation\Auth;
 
 use App\Exceptions\AuthFailedException;
+use illuminate\Facades\Validation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Validation\Validator as ValidationValidator;
 
 trait AuthenticatesUsers
 {
@@ -65,10 +68,21 @@ trait AuthenticatesUsers
      */
     protected function validateLogin(Request $request)
     {
-        $request->validate([
-            $this->username() => 'required|string',
-            'password' => 'required|string',
+        // $request->validate([
+        //     $this->username() => 'required|string',
+        //     'password' => 'required|string',
+        // ]);
+
+        $validator = Validator::make($request->all(),[
+            'username' => 'required',
+            'password' => 'required'
         ]);
+        if(!$validator){
+            return response()->json([
+                'error' => $validator->errors()->first(),
+                'errors'=> $validator->errors()
+            ]);
+        }
     }
 
     /**

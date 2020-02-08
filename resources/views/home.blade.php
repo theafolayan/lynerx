@@ -12,7 +12,7 @@
             <p class="fs-20"><i class="fa fa-map-marker mr-8"></i> {{auth()->user()->email}}</p>
 
             <hr class="w-50 ">
-                        <p class="fs-20"> {{auth()->user()->getTotalNumberOfCompletedLessons()}}</p>
+                <p class="fs-20"> {{auth()->user()->getTotalNumberOfCompletedLessons()}}</p>
 
 
             <a class="btn btn-xl btn-round btn-white w-200" href="#" data-scrollto="section-apply">Apply Now</a>
